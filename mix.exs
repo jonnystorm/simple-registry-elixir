@@ -10,15 +10,15 @@ defmodule SimpleRegistry.Mixfile do
      deps: deps]
   end
 
-  defp get_application(:prod) do
+  defp get_applications(:prod) do
     [applications: [:logger]]
   end
-  defp get_application(_) do
+  defp get_applications(_) do
     [applications: [:logger]]
   end
 
   def application do
-    [applications: [:logger]]
+    get_applications Mix.env
   end
 
   defp deps do
