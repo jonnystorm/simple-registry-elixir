@@ -10,12 +10,12 @@ defmodule SimpleRegistry do
     GenServer.call pid, {:deregister, key}
   end
 
-  @spec register(pid, any, any) :: :ok | :error
+  @spec register(pid, any, any) :: :ok | {:error, :eexist}
   def register(pid, key, value) do
     GenServer.call pid, {:register, key, value}
   end
 
-  @spec retrieve(pid, any) :: {:ok, any} | :error
+  @spec retrieve(pid, any) :: {:ok, any} | {:error, :enoent}
   def retrieve(pid, key) do
     GenServer.call pid, {:retrieve, key}
   end
